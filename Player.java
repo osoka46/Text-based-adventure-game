@@ -17,7 +17,7 @@ public class Player {
         Character.printCharsInfo();
     }
 
-    public void initPlayer()
+    public void initPlayer(int charId)
     {
 
     }

@@ -27,6 +27,12 @@ public abstract class Character {
         }
     }
 
+    public static int charsQuantity()
+    {
+        int charsQuantity=chars.length;
+        return charsQuantity;
+    }
+
     public Character getCharObjById(int id) {
         for (Character tempChar : chars) {
             if (tempChar.getId() == id) {
