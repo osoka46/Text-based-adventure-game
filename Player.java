@@ -2,15 +2,27 @@ public class Player {
     private int health;
     private int damage;
     private int money;
+    private String charName;
     private String name;
 
 
-    public Player(int health, int damage, int money, String name) {
-        this.health = health;
-        this.damage = damage;
-        this.money = money;
-        this.name = name;
+    public Player(String name)
+    {
+        this.name=name;
     }
+
+
+    public void getCharInfo()
+    {
+        Character.printCharsInfo();
+    }
+
+    public void initPlayer()
+    {
+
+    }
+
+
 
     public int getHealth() {
         return health;

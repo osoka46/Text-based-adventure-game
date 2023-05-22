@@ -4,6 +4,7 @@ public abstract class Character {
     private int damage;
     private int money;
     private String name;
+    private static Character chars[];
 
 
     public Character(int id, int health, int damage, int money, String name) {
@@ -14,9 +15,25 @@ public abstract class Character {
         this.name = name;
     }
 
-    public void getCharacters()
-    {
+    public static void printCharsInfo() {
+        chars = new Character[3];
+        chars[0] = new Samurai();
+        chars[1] = new Archer();
+        chars[2] = new Knight();
 
+        for (Character tempChar:chars)
+        {
+            System.out.println("id: "+tempChar.getId()+"\tname: "+tempChar.getName()+"\tdamage: "+tempChar.getDamage()+"\thealth: "+tempChar.getHealth()+"\tmoney: "+tempChar.getMoney());
+        }
+    }
+
+    public Character getCharObjById(int id) {
+        for (Character tempChar : chars) {
+            if (tempChar.getId() == id) {
+                return tempChar;
+            }
+        }
+        return null;
     }
 
     public int getId() {
