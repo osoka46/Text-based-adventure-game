@@ -4,6 +4,7 @@ public class Player {
     private int money;
     private String charName;
     private String name;
+    private String message="You have selected ";
 
 
     public Player(String name)
@@ -12,14 +13,25 @@ public class Player {
     }
 
 
-    public void getCharInfo()
+    public void getAllCharsInfo()
     {
-        Character.printCharsInfo();
+        Character.printAllCharsInfo();
     }
 
     public void initPlayer(int charId)
     {
-
+        System.out.println(this.message+Character.getCharObjById(charId).getName());
+       this.setDamage(Character.getCharObjById(charId).getDamage());
+       this.setHealth(Character.getCharObjById(charId).getHealth());
+       this.setMoney(Character.getCharObjById(charId).getMoney());
+    }
+    public void printCurrentInfo() {
+        System.out.println("Weapon: " +
+                "\tArmor: "+
+                "\tBlock: "+
+                "\tDamage: " + this.getDamage() +
+                "\tHealth: " + this.getHealth()
+                + "\tGold: " + this.getMoney());
     }
 
 

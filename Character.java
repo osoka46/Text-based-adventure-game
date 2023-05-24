@@ -1,4 +1,4 @@
-public abstract class Character {
+public class Character {
     private int id;
     private int health;
     private int damage;
@@ -7,6 +7,8 @@ public abstract class Character {
     private static Character chars[];
 
 
+    public Character() {
+    }
     public Character(int id, int health, int damage, int money, String name) {
         this.id = id;
         this.health = health;
@@ -15,7 +17,7 @@ public abstract class Character {
         this.name = name;
     }
 
-    public static void printCharsInfo() {
+    public static void printAllCharsInfo() {
         chars = new Character[3];
         chars[0] = new Samurai();
         chars[1] = new Archer();
@@ -23,7 +25,7 @@ public abstract class Character {
 
         for (Character tempChar:chars)
         {
-            System.out.println("id: "+tempChar.getId()+"\tname: "+tempChar.getName()+"\tdamage: "+tempChar.getDamage()+"\thealth: "+tempChar.getHealth()+"\tmoney: "+tempChar.getMoney());
+            System.out.println("Id: "+tempChar.getId()+"\tName: "+tempChar.getName()+"\tDamage: "+tempChar.getDamage()+"\tHealth: "+tempChar.getHealth()+"\tGold: "+tempChar.getMoney());
         }
     }
 
@@ -33,7 +35,7 @@ public abstract class Character {
         return charsQuantity;
     }
 
-    public Character getCharObjById(int id) {
+    public static Character getCharObjById(int id) {
         for (Character tempChar : chars) {
             if (tempChar.getId() == id) {
                 return tempChar;
