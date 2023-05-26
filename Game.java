@@ -78,23 +78,23 @@ public class Game {
                     break;
                 }
                 case 1: {
-                    location = new SafeHouse();
+                    location = new SafeHouse(this.player);
                     break;
                 }
                 case 2: {
-                    location = new ToolHouse();
+                    location = new ToolHouse(this.player);
                     break;
                 }
                 case 3: {
-                    location = new Cave();
+                    location = new Cave(this.player);
                     break;
                 }
                 case 4: {
-                    location = new Forest();
+                    location = new Forest(this.player);
                     break;
                 }
                 case 5: {
-                    location = new River();
+                    location = new River(this.player);
                     break;
                 }
             }

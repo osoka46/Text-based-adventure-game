@@ -5,7 +5,15 @@ public class Player {
     private String charName;
     private String name;
     private String message="You have selected ";
+    private int originHealth;
 
+    public int getOriginHealth() {
+        return originHealth;
+    }
+
+    public void originHealth(int orjHealth) {
+        this.originHealth = orjHealth;
+    }
 
     public Player(String name)
     {
@@ -22,6 +30,7 @@ public class Player {
     {
         System.out.println(this.message+Character.getCharObjById(charId).getName());
        this.setDamage(Character.getCharObjById(charId).getDamage());
+       this.originHealth(Character.getCharObjById(charId).getHealth());
        this.setHealth(Character.getCharObjById(charId).getHealth());
        this.setMoney(Character.getCharObjById(charId).getMoney());
     }
