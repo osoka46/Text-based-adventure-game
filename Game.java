@@ -8,6 +8,7 @@ public class Game {
     private static Scanner input;
     private final int RIGHT = 3;
     private int wait = 3;
+    Location location;
 
 
     public void start() {
@@ -45,6 +46,7 @@ public class Game {
         check = true;
         player.printCurrentInfo();
 
+
         while (tempRight >= 0 && check) {
             int tempSelectLoc = 0;
             System.out.println("Select a Location");
@@ -63,12 +65,50 @@ public class Game {
             } catch (Exception e) {
                 if (tempRight == 0) {
                     out.println("you fucking idiot. Go and learn how to type.");
-                    check=false;
+                    check = false;
                 } else {
                     tempRight--;
                     out.println("type a number noob.");
                 }
             }
+
+            switch (tempSelectLoc) {
+                case 0: {
+                    location = null;
+                    break;
+                }
+                case 1: {
+                    location = new SafeHouse();
+                    break;
+                }
+                case 2: {
+                    location = new ToolHouse();
+                    break;
+                }
+                case 3: {
+                    location = new Cave();
+                    break;
+                }
+                case 4: {
+                    location = new Forest();
+                    break;
+                }
+                case 5: {
+                    location = new River();
+                    break;
+                }
+            }
+
+            if (location == null) {
+                out.println("You have left this dark and creepy world too early.");
+                break;
+            }
+
+            if (!location.onLocation()) {
+                out.println("Game over");
+                break;
+            }
+
         }
     }
 }
