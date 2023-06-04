@@ -23,7 +23,7 @@ public class Game {
         boolean check = true;
         int tempRight = RIGHT;
 
-        while (tempRight > 0 && check) {
+        while (tempRight >= 0 && check) {
             out.print("type an id to choose a character: ");
             tempIdChar = input.nextLine();
             tempRight--;
@@ -61,6 +61,7 @@ public class Game {
                 if (tempSelectLoc < 0 || tempSelectLoc > 6) {
                     tempRight--;
                     out.println("Type between 0-6");
+                    continue;
                 }
             } catch (Exception e) {
                 if (tempRight == 0) {
@@ -69,6 +70,7 @@ public class Game {
                 } else {
                     tempRight--;
                     out.println("type a number noob.");
+                    continue;
                 }
             }
 
