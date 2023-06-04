@@ -24,7 +24,21 @@ public abstract class Weapons {
 
     public Weapons getWeaponObjById(int id)
     {
+        for (Weapons tempWeapons:getAllWeapons())
+        {
+            if (tempWeapons.getId()==id)
+            {
+                return tempWeapons;
+            }
+        }
         return null;
+    }
+
+    public Weapons[] getAllWeapons()
+    {
+        Weapons []weapons={new Pistol(),new Sword(),new Rifle()};
+
+       return weapons;
     }
 
 

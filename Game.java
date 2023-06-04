@@ -35,6 +35,7 @@ public class Game {
             } catch (Exception e) {
                 if (tempRight == 0) {
                     out.println("you fucking idiot. Go and learn how to type.");
+                    System.exit(0);
                 } else {
                     out.println("type a number noob.");
                 }
