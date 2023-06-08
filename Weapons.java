@@ -1,4 +1,4 @@
-public abstract class Weapons {
+public class Weapons {
 
     private int id;
     private int damage;
@@ -22,19 +22,19 @@ public abstract class Weapons {
         }
     }
 
-    public Weapons getWeaponObjById(int id)
+    public static Weapons getWeaponObjById(int id)
     {
-        for (Weapons tempWeapons:getAllWeapons())
+        for (Weapons tempWeapon:getAllWeapons())
         {
-            if (tempWeapons.getId()==id)
+            if (tempWeapon.getId()==id)
             {
-                return tempWeapons;
+                return tempWeapon;
             }
         }
         return null;
     }
 
-    public Weapons[] getAllWeapons()
+    public static Weapons[] getAllWeapons()
     {
         Weapons []weapons={new Pistol(),new Sword(),new Rifle()};
 

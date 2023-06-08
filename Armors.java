@@ -1,4 +1,4 @@
-public abstract class Armors {
+public class Armors {
 
     private int id;
     private int block;
@@ -21,14 +21,28 @@ public abstract class Armors {
         }
     }
 
-    public Armors getArmorObjById(int id)
+    public static Armors getArmorObjById(int id)
     {
+        for (Armors tempArmor:getAllArmors())
+        {
+            if (tempArmor.getId()==id)
+            {
+                return tempArmor;
+            }
+        }
         return null;
+    }
+
+    public static Armors[] getAllArmors()
+    {
+        Armors []armors={new Armor(),new Protector(), new Garment()};
+
+        return armors;
     }
 
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {

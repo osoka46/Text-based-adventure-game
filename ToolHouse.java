@@ -23,10 +23,10 @@ public class ToolHouse extends NormalLoc {
         String tempSelect;
         int tempRight = RIGHT;
         int selectedId = 0;
-        boolean showMenu=true;
+        boolean showMenu = true;
 
 
-        while (tempRight >= 0&&showMenu) {
+        while (tempRight >= 0 && showMenu) {
             tempSelect = input.nextLine();
             try {
                 selectedId = Integer.parseInt(tempSelect);
@@ -57,7 +57,7 @@ public class ToolHouse extends NormalLoc {
                 }
                 case 3: {
                     out.println("You can come back any time.");
-                    showMenu=false;
+                    showMenu = false;
                     return true;
                 }
             }
@@ -76,42 +76,93 @@ public class ToolHouse extends NormalLoc {
     }
 
     public void buyWeapon() {
-
-
-
-
-
         out.println("Type weapon id, you want to buy.");
         String tempSelect;
         int tempRight = RIGHT;
         int selectedId = 0;
-        boolean showMenu=true;
+        boolean showMenu = true;
 
-        tempSelect = input.nextLine();
-        try {
-            selectedId = Integer.parseInt(tempSelect);
-            if (selectedId < 0 && selectedId > 3) {
-                out.println("type a valid number noob.");
+
+        while (tempRight >= 0 && showMenu) {
+            tempSelect = input.nextLine();
+            try {
+                selectedId = Integer.parseInt(tempSelect);
+                if (selectedId < 0 && selectedId > Weapons.getAllWeapons().length) {
+                    out.println("type a valid number noob.");
+                    tempRight--;
+                } else showMenu = false;
+            } catch (Exception e) {
                 tempRight--;
+                if (tempRight == 0) {
+                    out.println("you fucking idiot. Go and learn how to type.");
+                    System.exit(0);
+                } else {
+                    out.println("type a valid number noob.");
+                }
             }
-        } catch (Exception e) {
-            tempRight--;
-            if (tempRight == 0) {
-                out.println("you fucking idiot. Go and learn how to type.");
-                System.exit(0);
-            } else {
-                out.println("type a valid number noob.");
+
+            weapons = Weapons.getWeaponObjById(selectedId);
+
+            if(weapons!=null)
+            {
+                int balance=0;
+               if (weapons.getMoney()>this.getPlayer().getMoney())
+               {
+                   out.println("You do not have enough money.");
+               }else {
+                   this.getPlayer().setDamage(weapons.getDamage());
+                   balance=this.getPlayer().getMoney()-weapons.getMoney();
+                   this.getPlayer().setMoney(balance);
+                   out.println("Your money: "+balance);
+                   out.println("Your new weapon: "+weapons.getName());
+               }
             }
         }
-
-
-
-
-
-
     }
+    public void buyArmor () {
 
-    public void buyArmor() {
+        out.println("Type armor id, you want to buy.");
+        String tempSelect;
+        int tempRight = RIGHT;
+        int selectedId = 0;
+        boolean showMenu = true;
+
+
+        while (tempRight >= 0 && showMenu) {
+            tempSelect = input.nextLine();
+            try {
+                selectedId = Integer.parseInt(tempSelect);
+                if (selectedId < 0 && selectedId > Armors.getAllArmors().length) {
+                    out.println("type a valid number noob.");
+                    tempRight--;
+                } else showMenu = false;
+            } catch (Exception e) {
+                tempRight--;
+                if (tempRight == 0) {
+                    out.println("you fucking idiot. Go and learn how to type.");
+                    System.exit(0);
+                } else {
+                    out.println("type a valid number noob.");
+                }
+            }
+
+            armors = Armors.getArmorObjById(selectedId);
+
+            if(weapons!=null)
+            {
+                int balance=0;
+                if (armors.getMoney()>this.getPlayer().getMoney())
+                {
+                    out.println("You do not have enough money.");
+                }else {
+
+                    balance=this.getPlayer().getMoney()-weapons.getMoney();
+                    this.getPlayer().setMoney(balance);
+                    out.println("Your money: "+balance);
+                    out.println("Your new weapon: "+weapons.getName());
+                }
+            }
+        }
 
     }
 }
